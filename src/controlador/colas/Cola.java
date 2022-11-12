@@ -30,15 +30,14 @@ public class Cola<E> extends ListaEnlazada<E> {
 
     public void queue(E dato) throws PosicionNoEncontradaException, CimaException {
         if (!estaLleno()) {
-            insertar(dato);
+            insertarPosicion(dato, getSize() - 1);
         } else {
             throw new CimaException();
         }
 
     }
 
-
-public E dequue() throws ColaVaciaExcepcion, PosicionNoEncontradaException, ListaNullException {
+    public E dequue() throws ColaVaciaExcepcion, PosicionNoEncontradaException, ListaNullException {
         if (!estaVacia()) {
             E dato = eliminar(0);
             return dato;
