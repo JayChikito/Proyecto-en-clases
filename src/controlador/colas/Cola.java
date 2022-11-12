@@ -15,30 +15,36 @@ import controlador.listas.excepciones.PosicionNoEncontradaException;
  *
  * @author DEEPIN
  */
-public class Cola<E> extends ListaEnlazada<E>{
+public class Cola<E> extends ListaEnlazada<E> {
+
     private Integer cima;
-    
-    public Cola(Integer cima){
-        this.cima=cima;
+
+    public Cola(Integer cima) {
+        this.cima = cima;
     }
-    
-    public Boolean estaLleno(){
+
+    public Boolean estaLleno() {
         return cima == getSize();
-        
+
     }
-    
-    public void queue (E dato) throws PosicionNoEncontradaException,CimaException{
-        if(!estaLleno()){
-            insertarPosicion(dato, getSize() -1);
-        }else throw new CimaException();
+
+    public void queue(E dato) throws PosicionNoEncontradaException, CimaException {
+        if (!estaLleno()) {
+            insertar(dato);
+        } else {
+            throw new CimaException();
+        }
+
     }
-    
-    public E dequue() throws ColaVaciaExcepcion, PosicionNoEncontradaException, ListaNullException {
-        if(!estaVacia()){
+
+
+public E dequue() throws ColaVaciaExcepcion, PosicionNoEncontradaException, ListaNullException {
+        if (!estaVacia()) {
             E dato = eliminar(0);
             return dato;
-        }else throw new ColaVaciaExcepcion();
-            
-        
+        } else {
+            throw new ColaVaciaExcepcion();
+        }
+
     }
 }
