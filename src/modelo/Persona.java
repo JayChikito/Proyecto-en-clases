@@ -10,6 +10,7 @@ package modelo;
  * @author DEEPIN
  */
 public class Persona {
+
     private Integer id;
     private String apellido;
     private String nombre;
@@ -19,7 +20,7 @@ public class Persona {
     private String indetifiacion;
     private String tipoIdentificacion;
     private Boolean estado;
-    private Rol rol;
+    private Integer id_rol;
 
     public Integer getId() {
         return id;
@@ -93,16 +94,12 @@ public class Persona {
         this.estado = estado;
     }
 
-    public Rol getRol() {
-        return rol;
+    public Integer getId_rol() {
+        return id_rol;
     }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setId_rol(Integer id_rol) {
+        this.id_rol = id_rol;
     }
 
-
-    
-    
-    
 }
