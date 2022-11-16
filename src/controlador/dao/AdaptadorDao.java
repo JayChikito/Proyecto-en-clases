@@ -5,35 +5,87 @@
  */
 package controlador.dao;
 
+import com.sun.xml.internal.bind.v2.schemagen.Util;
 import controlador.listas.ListaEnlazada;
+import controlador.listas.NodoLista;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 /**
  *
  * @author DEEPIN
  */
-public class AdaptadorDao <T> implements InterfazDao<T>{
-
-    @Override
-    public void guardar(T dato) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+public class AdaptadorDao<T> implements InterfazDao<T> {
+    
+    private String URL = "data" + File.separatorChar;
+    private Class<T> clazz;
+    
+    public AdaptadorDao(Class<T> clazz) {
+        this.clazz = clazz;
+        URL += this.clazz.getSimpleName() + ".xml";
     }
-
+    
+    @Override
+    public void guardar(T dato) throws FileNotFoundException, JAXBException {
+        ListaEnlazada<T> lista = listar();
+        lista.insertar(dato);
+//        try {
+        FileOutputStream file = new FileOutputStream(URL);
+        JAXBContext jaxbc = JAXBContext.newInstance(new Class[]{ListaEnlazada.class, this.clazz});
+        Marshaller marshaller = jaxbc.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        marshaller.marshal(lista, file);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+    }
+    
     @Override
     public void modificar(T dato) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public ListaEnlazada<T> listar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ListaEnlazada<T> lista = new ListaEnlazada<>();
+        try {
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.parse(URL);
+            NodeList datos = doc.getElementsByTagName(this.clazz.getSimpleName().toLowerCase());
+            for (int i = 0; i < datos.getLength(); i++) {
+//                System.out.println(datos.item(i));
+                Node n1 = datos.item(i);
+                NodeList nodo1 = n1.getChildNodes();                
+                
+                for (int j = 0; j < nodo1.getLength(); j++) {
+                    Node dato = nodo1.item(j);
+                    if (dato.getNodeName() != null && !dato.getNodeName().equalsIgnoreCase("")
+                            && dato.getTextContent() != null && !dato.getTextContent().equalsIgnoreCase("")
+                            && !dato.getNodeName().equalsIgnoreCase("#text")) {
+                        System.out.println(dato.getNodeName() + ": " + dato.getTextContent());
+                    }
+                }
+            }
+        } catch (Exception e) {
+        }
+        return lista;
     }
-
+    
     @Override
     public T obtener(Integer id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-
-    
     
 }

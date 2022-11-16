@@ -7,11 +7,13 @@ package controlador.listas;
 
 import controlador.listas.excepciones.ListaNullException;
 import controlador.listas.excepciones.PosicionNoEncontradaException;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author DEEPIN
  */
+@XmlRootElement
 public class ListaEnlazada<E> {
 
     private NodoLista<E> cabecera;
@@ -68,8 +70,8 @@ public class ListaEnlazada<E> {
         if (estaVacia()) {
             insertar(dato);
         } else if (pos >= 0 && pos < size) {
-            if (pos == (size -1)) {
-                 insertar(dato);
+            if (pos == (size - 1)) {
+                insertar(dato);
             } else if (pos == 0) {
                 insertarCabecera(dato);
             } else {

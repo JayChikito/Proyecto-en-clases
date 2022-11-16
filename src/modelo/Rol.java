@@ -5,10 +5,13 @@
  */
 package modelo;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author DEEPIN
  */
+@XmlRootElement
 public class Rol {
     
     private Integer id;

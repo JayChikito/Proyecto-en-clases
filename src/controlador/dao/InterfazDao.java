@@ -6,6 +6,8 @@
 package controlador.dao;
 
 import controlador.listas.ListaEnlazada;
+import java.io.FileNotFoundException;
+import javax.xml.bind.JAXBException;
 
 /**
  *
@@ -13,7 +15,7 @@ import controlador.listas.ListaEnlazada;
  */
 public interface InterfazDao<T> {
 
-    public void guardar(T dato);
+    public void guardar(T dato) throws FileNotFoundException, JAXBException;
 
     public void modificar(T dato);
     public ListaEnlazada<T> listar();

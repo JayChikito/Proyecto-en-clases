@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listaEnlazada>
+    <cabecera>
+        <rol>
+            <descripcion>Nunca hace nada xd</descripcion>
+            <id>1</id>
+            <nombre>Gerente</nombre>
+        </rol>
+    </cabecera>
+    <size>1</size>
+</listaEnlazada>
