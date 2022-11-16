@@ -11,6 +11,7 @@ import controlador.listas.ListaEnlazada;
 import controlador.listas.excepciones.ListaNullException;
 import controlador.listas.excepciones.PosicionNoEncontradaException;
 import controlador.pilas.Pila;
+import controlador.utiles.Utilidades;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -80,32 +81,23 @@ public class ProyectoFinal {
 ////            System.out.println("Error: " + e.getMessage());
 ////        }
 //
-
-
         AdaptadorDao<Rol> ad = new AdaptadorDao<Rol>(Rol.class);
-            Rol aux = new Rol();
-            aux.setId(1);
-            aux.setNombre("Gerente");
-            aux.setDescripcion("Nunca hace nada xd");
+        Rol aux = new Rol();
+        aux.setId(1);
+        aux.setNombre("Gerente");
+        aux.setDescripcion("Nunca hace nada xd");
         try {
 //            ad.guardar(aux);
 //            ad.guardar(aux);
             ad.listar();
-        } catch (Exception e) {
-            System.out.println(e);
-        
+//            System.out.println(Utilidades.capitalizar("hola"));
+        } catch (Exception ex) {
+            System.out.println(ex);
+
         }
-        
+
     }
-
-
-
-
-
-
-
-
-
-
+    
+   
 
 }

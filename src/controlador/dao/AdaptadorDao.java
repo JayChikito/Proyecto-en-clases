@@ -8,9 +8,11 @@ package controlador.dao;
 import com.sun.xml.internal.bind.v2.schemagen.Util;
 import controlador.listas.ListaEnlazada;
 import controlador.listas.NodoLista;
+import controlador.utiles.Utilidades;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.lang.reflect.Method;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
@@ -69,13 +71,24 @@ public class AdaptadorDao<T> implements InterfazDao<T> {
                 Node n1 = datos.item(i);
                 NodeList nodo1 = n1.getChildNodes();                
                 
+                T obj = this.clazz.newInstance();
+                
                 for (int j = 0; j < nodo1.getLength(); j++) {
                     Node dato = nodo1.item(j);
                     if (dato.getNodeName() != null && !dato.getNodeName().equalsIgnoreCase("")
                             && dato.getTextContent() != null && !dato.getTextContent().equalsIgnoreCase("")
                             && !dato.getNodeName().equalsIgnoreCase("#text")) {
-                        System.out.println(dato.getNodeName() + ": " + dato.getTextContent());
+                        Method metodo = null;
+                        for(Method met : this.clazz.getMethods()){
+                            if(met.getName(). equalsIgnoreCase(("set" +Utilidades.capitalizar(dato.getNodeName())))){
+                                metodo = met;
+                                break;
+                            }
+                        }
+                        System.out.println(metodo.getName());
+                        metodo.invoke(obj, dato.getTextContent());
                     }
+//                    System.out.println(dato.getNodeName() + ": " + dato.getTextContent());
                 }
             }
         } catch (Exception e) {

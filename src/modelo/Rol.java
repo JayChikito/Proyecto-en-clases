@@ -18,6 +18,17 @@ public class Rol {
     private String nombre;
     private String descripcion;
 
+    public Rol() {
+    }
+
+    public Rol(Integer id, String nombre, String descripcion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
+
+    
+    
     public Integer getId() {
         return id;
     }
