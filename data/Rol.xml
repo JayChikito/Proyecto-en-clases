@@ -3,9 +3,15 @@
     <cabecera>
         <rol>
             <descripcion>Nunca hace nada xd</descripcion>
-            <id>1</id>
             <nombre>Gerente</nombre>
         </rol>
+        <siguiente>
+            <rol>
+                <descripcion>Si hace algo xd</descripcion>
+                <id>2</id>
+                <nombre>Cajero</nombre>
+            </rol>
+        </siguiente>
     </cabecera>
-    <size>1</size>
+    <size>2</size>
 </listaEnlazada>

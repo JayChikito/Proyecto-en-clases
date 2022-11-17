@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<rol>
-    <descripcion>Describe al gerente</descripcion>
-    <id>1</id>
-    <nombre>Gerente</nombre>
-</rol>

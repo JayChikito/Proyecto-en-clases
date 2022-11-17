@@ -29,15 +29,15 @@ import org.w3c.dom.NodeList;
  * @author DEEPIN
  */
 public class AdaptadorDao<T> implements InterfazDao<T> {
-    
+
     private String URL = "data" + File.separatorChar;
     private Class<T> clazz;
-    
+
     public AdaptadorDao(Class<T> clazz) {
         this.clazz = clazz;
         URL += this.clazz.getSimpleName() + ".xml";
     }
-    
+
     @Override
     public void guardar(T dato) throws FileNotFoundException, JAXBException {
         ListaEnlazada<T> lista = listar();
@@ -52,12 +52,12 @@ public class AdaptadorDao<T> implements InterfazDao<T> {
 //            System.out.println(e);
 //        }
     }
-    
+
     @Override
     public void modificar(T dato) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     @Override
     public ListaEnlazada<T> listar() {
         ListaEnlazada<T> lista = new ListaEnlazada<>();
@@ -69,36 +69,39 @@ public class AdaptadorDao<T> implements InterfazDao<T> {
             for (int i = 0; i < datos.getLength(); i++) {
 //                System.out.println(datos.item(i));
                 Node n1 = datos.item(i);
-                NodeList nodo1 = n1.getChildNodes();                
-                
+                NodeList nodo1 = n1.getChildNodes();
+
                 T obj = this.clazz.newInstance();
-                
+
                 for (int j = 0; j < nodo1.getLength(); j++) {
                     Node dato = nodo1.item(j);
                     if (dato.getNodeName() != null && !dato.getNodeName().equalsIgnoreCase("")
                             && dato.getTextContent() != null && !dato.getTextContent().equalsIgnoreCase("")
                             && !dato.getNodeName().equalsIgnoreCase("#text")) {
                         Method metodo = null;
-                        for(Method met : this.clazz.getMethods()){
-                            if(met.getName(). equalsIgnoreCase(("set" +Utilidades.capitalizar(dato.getNodeName())))){
+                        for (Method met : this.clazz.getMethods()) {
+                            if (met.getName().equalsIgnoreCase(("set" + Utilidades.capitalizar(dato.getNodeName())))) {
                                 metodo = met;
                                 break;
                             }
                         }
-                        System.out.println(metodo.getName());
-                        metodo.invoke(obj, dato.getTextContent());
+//                        System.out.println(metodo.getName());
+                        metodo.invoke(obj,
+                                Utilidades.transformarDato(Utilidades.obtenerAtributo(clazz, dato.getNodeName()), dato.getTextContent()));
+
                     }
 //                    System.out.println(dato.getNodeName() + ": " + dato.getTextContent());
                 }
+                lista.insertar(obj);
             }
         } catch (Exception e) {
         }
         return lista;
     }
-    
+
     @Override
     public T obtener(Integer id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

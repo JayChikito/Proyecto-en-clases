@@ -5,10 +5,14 @@
  */
 package modelo;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import modelo.enums.TipoIdentificacion;
+
 /**
  *
  * @author DEEPIN
  */
+@XmlRootElement
 public class Persona {
 
     private Integer id;
@@ -18,7 +22,7 @@ public class Persona {
     private String telefono;
     private String correo;
     private String indetifiacion;
-    private String tipoIdentificacion;
+    private TipoIdentificacion tipoIdentificacion;
     private Boolean estado;
     private Integer id_rol;
 
@@ -78,11 +82,11 @@ public class Persona {
         this.indetifiacion = indetifiacion;
     }
 
-    public String getTipoIdentificacion() {
+    public TipoIdentificacion getTipoIdentificacion() {
         return tipoIdentificacion;
     }
 
-    public void setTipoIdentificacion(String tipoIdentificacion) {
+    public void setTipoIdentificacion(TipoIdentificacion tipoIdentificacion) {
         this.tipoIdentificacion = tipoIdentificacion;
     }
 

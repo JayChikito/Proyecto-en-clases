@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listaEnlazada>
+    <cabecera>
+        <persona>
+            <apellido>Miyamoto</apellido>
+            <nombre>Musashi</nombre>
+        </persona>
+        <siguiente>
+            <persona>
+                <apellido>Karlsefni</apellido>
+                <nombre>Thorfinn</nombre>
+            </persona>
+            <siguiente>
+                <persona>
+                    <apellido>White</apellido>
+                    <direccion>Laboratorio de Ohio</direccion>
+                    <id>3</id>
+                    <nombre>Walter</nombre>
+                </persona>
+            </siguiente>
+        </siguiente>
+    </cabecera>
+    <size>3</size>
+</listaEnlazada>

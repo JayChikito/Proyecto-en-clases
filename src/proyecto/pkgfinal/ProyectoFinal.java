@@ -13,9 +13,11 @@ import controlador.listas.excepciones.PosicionNoEncontradaException;
 import controlador.pilas.Pila;
 import controlador.utiles.Utilidades;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Field;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.bind.JAXBException;
+import modelo.Persona;
 import modelo.Rol;
 
 /**
@@ -81,23 +83,39 @@ public class ProyectoFinal {
 ////            System.out.println("Error: " + e.getMessage());
 ////        }
 //
-        AdaptadorDao<Rol> ad = new AdaptadorDao<Rol>(Rol.class);
-        Rol aux = new Rol();
-        aux.setId(1);
-        aux.setNombre("Gerente");
-        aux.setDescripcion("Nunca hace nada xd");
-        try {
+//        AdaptadorDao<Rol> ad = new AdaptadorDao<Rol>(Rol.class);
+//        Rol aux = new Rol();
+//        aux.setId(2);
+//        aux.setNombre("Cajero");
+//        aux.setDescripcion("Si hace algo xd");
+//        try {
 //            ad.guardar(aux);
-//            ad.guardar(aux);
-            ad.listar();
-//            System.out.println(Utilidades.capitalizar("hola"));
-        } catch (Exception ex) {
-            System.out.println(ex);
+////            ad.guardar(aux);
+//            //ad.listar();
+//            ad.listar().imprimir();
+////            System.out.println(Utilidades.capitalizar("hola"));
+//            //Field a = Utilidades.obtenerAtributo(Rol.class, "id");
+//            //System.out.println(a.getType().getSimpleName());
+//        } catch (Exception e) {
+//            System.out.println(e);
+//
+//        }
 
+        AdaptadorDao<Persona> ad = new AdaptadorDao<>(Persona.class);
+        try {
+            Persona p = new Persona();
+            p.setApellido("White");
+            p.setNombre("Walter");
+            p.setDireccion("Laboratorio de Ohio");
+            p.setId(3);
+            ad.guardar(p);
+        } catch (Exception e) {
+            System.out.println(e);
         }
 
-    }
     
-   
 
+    }
+
+    //revisar 01:30:00
 }

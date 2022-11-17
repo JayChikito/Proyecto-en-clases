@@ -16,6 +16,7 @@ public class Cuenta {
     private Boolean estado;
     private Integer id_persona;
     
+    
     public Integer getId() {
         return id;
     }
