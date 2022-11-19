@@ -36,7 +36,12 @@ public class Utilidades {
             if (atributo.getType().getSimpleName().equals("Intger")) {
                 transformar = Integer.parseInt(dato);
             }
-        } else {
+        }else if(atributo.getType().isEnum()){
+            Enum enumeracion = Enum.valueOf((Class) atributo.getType(), dato.toString());
+            transformar = enumeracion;
+            
+        } 
+        else {
             transformar = dato;
         }
         return transformar;

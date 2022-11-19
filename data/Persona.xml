@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listaEnlazada>
+    <cabecera>
+        <persona>
+            <apellido>Administrador</apellido>
+            <correo>admin@imperium.com</correo>
+            <indetifiacion>1111111111</indetifiacion>
+            <nombre>Administrador</nombre>
+            <tipoIdentificacion>CEDULA</tipoIdentificacion>
+        </persona>
+        <siguiente>
+            <persona>
+                <apellido>Final</apellido>
+                <correo>consumidor@imperium.com</correo>
+                <direccion>Planeta Tierra</direccion>
+                <id>2</id>
+                <id_rol>4</id_rol>
+                <indetifiacion>9999999999</indetifiacion>
+                <nombre>Consumidor</nombre>
+                <tipoIdentificacion>CEDULA</tipoIdentificacion>
+            </persona>
+        </siguiente>
+    </cabecera>
+    <size>2</size>
+</listaEnlazada>

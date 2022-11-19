@@ -20,6 +20,9 @@ public class PersonaDao extends AdaptadorDao<Persona> {
     }
 
     public Persona getPersona() {
+        if (persona == null){
+            persona = new Persona();
+        }
         return persona;
     }
 
@@ -28,6 +31,7 @@ public class PersonaDao extends AdaptadorDao<Persona> {
     }
 
     public boolean guardar() throws Exception {
+        this.persona.setId(generarId());
         guardar(this.persona);
         return true;
     }

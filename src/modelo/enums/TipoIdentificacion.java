@@ -9,6 +9,6 @@ package modelo.enums;
  *
  * @author DEEPIN
  */
-public class TipoIdentificacion {
-    
+public enum TipoIdentificacion {
+    CEDULA,PASAPORTE,RUC
 }

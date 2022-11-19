@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listaEnlazada>
+    <cabecera>
+        <rol>
+            <descripcion>El que nunca hace nada xd</descripcion>
+            <nombre>Gerente</nombre>
+        </rol>
+        <siguiente>
+            <rol>
+                <descripcion>El que hace todo xd</descripcion>
+                <nombre>Cajero</nombre>
+            </rol>
+            <siguiente>
+                <rol>
+                    <descripcion>El que tiene permisos sobre el sistema</descripcion>
+                    <nombre>Sistemas</nombre>
+                </rol>
+                <siguiente>
+                    <rol>
+                        <descripcion>Si hace algo xd</descripcion>
+                        <id>2</id>
+                        <nombre>Cajero</nombre>
+                    </rol>
+                </siguiente>
+            </siguiente>
+        </siguiente>
+    </cabecera>
+    <size>4</size>
+</listaEnlazada>

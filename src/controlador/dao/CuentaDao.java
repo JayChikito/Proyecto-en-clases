@@ -6,6 +6,7 @@
 package controlador.dao;
 
 import modelo.Cuenta;
+import modelo.enums.TipoIdentificacion;
 
 /**
  *
@@ -20,6 +21,9 @@ public class CuentaDao extends AdaptadorDao<Cuenta> {
     }
 
     public Cuenta getCuenta() {
+        if (cuenta == null) {
+            cuenta = new Cuenta();
+        }
         return cuenta;
     }
 
@@ -28,6 +32,7 @@ public class CuentaDao extends AdaptadorDao<Cuenta> {
     }
 
     public boolean guardar() throws Exception {
+        this.cuenta.setId(generarId());
         guardar(this.cuenta);
         return true;
     }
@@ -36,8 +41,40 @@ public class CuentaDao extends AdaptadorDao<Cuenta> {
         modificar(this.cuenta, pos);
         return true;
     }
-    
-    private Integer generarId(){
-        return listar().getSize()+1;
+
+    private Integer generarId() {
+        return listar().getSize() + 1;
+    }
+
+    public void crearCuenta() {
+        if (listar().estaVacia()) {
+            try {
+                PersonaDao pd = new PersonaDao();
+                pd.getPersona().setApellido("Administrador");
+                pd.getPersona().setNombre("Administrador");
+                pd.getPersona().setCorreo("admin@imperium.com");
+                pd.getPersona().setIndetifiacion("1111111111");
+                pd.getPersona().setTipoIdentificacion(TipoIdentificacion.CEDULA);
+                pd.getPersona().setId_rol(3);
+                pd.guardar();
+                this.getCuenta().setUsuario(pd.getPersona().getCorreo());
+                this.getCuenta().setEstado(Boolean.TRUE);
+                this.getCuenta().setId_persona(pd.getPersona().getId());
+                this.getCuenta().setClave("admin1234");
+                this.guardar();
+                pd.setPersona(null);
+                this.setCuenta(null);
+                pd.getPersona().setApellido("Final");
+                pd.getPersona().setNombre("Consumidor");
+                pd.getPersona().setCorreo("consumidor@imperium.com");
+                pd.getPersona().setIndetifiacion("9999999999");
+                pd.getPersona().setDireccion("Planeta Tierra");
+                pd.getPersona().setTipoIdentificacion(TipoIdentificacion.CEDULA);
+                pd.getPersona().setId_rol(4);
+                pd.guardar();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
     }
 }

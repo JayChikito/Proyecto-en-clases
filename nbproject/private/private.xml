@@ -5,7 +5,7 @@
         <group>
             <file>file:/home/DEEPIN/NetBeansProjects/Proyecto%20Final/src/controlador/dao/PersonaDao.java</file>
             <file>file:/home/DEEPIN/NetBeansProjects/Proyecto%20Final/src/controlador/utiles/Utilidades.java</file>
-            <file>file:/home/DEEPIN/NetBeansProjects/Proyecto%20Final/data/Persona.xml</file>
+            <file>file:/home/DEEPIN/NetBeansProjects/Proyecto%20Final/src/controlador/dao/CuentaDao.java</file>
             <file>file:/home/DEEPIN/NetBeansProjects/Proyecto%20Final/src/modelo/Rol.java</file>
             <file>file:/home/DEEPIN/NetBeansProjects/Proyecto%20Final/src/controlador/dao/AdaptadorDao.java</file>
             <file>file:/home/DEEPIN/NetBeansProjects/Proyecto%20Final/src/modelo/enums/TipoIdentificacion.java</file>
