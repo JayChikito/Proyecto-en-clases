@@ -83,35 +83,35 @@ public class ProyectoFinal {
 ////            System.out.println("Error: " + e.getMessage());
 ////        }
 //
-//        AdaptadorDao<Rol> ad = new AdaptadorDao<Rol>(Rol.class);
-//        Rol aux = new Rol();
-//        aux.setId(2);
-//        aux.setNombre("Cajero");
-//        aux.setDescripcion("Si hace algo xd");
-//        try {
-//            ad.guardar(aux);
-////            ad.guardar(aux);
-//            //ad.listar();
-//            ad.listar().imprimir();
-////            System.out.println(Utilidades.capitalizar("hola"));
-//            //Field a = Utilidades.obtenerAtributo(Rol.class, "id");
-//            //System.out.println(a.getType().getSimpleName());
-//        } catch (Exception e) {
-//            System.out.println(e);
-//
-//        }
-
-        AdaptadorDao<Persona> ad = new AdaptadorDao<>(Persona.class);
+        AdaptadorDao<Rol> ad = new AdaptadorDao<Rol>(Rol.class);
+        Rol aux = new Rol();
+        aux.setId(2);
+        aux.setNombre("Cajero");
+        aux.setDescripcion("Si hace algo xd");
         try {
-            Persona p = new Persona();
-            p.setApellido("White");
-            p.setNombre("Walter");
-            p.setDireccion("Laboratorio de Ohio");
-            p.setId(3);
-            ad.guardar(p);
+            ad.guardar(aux);
+//            ad.guardar(aux);
+            //ad.listar();
+            ad.listar().imprimir();
+//            System.out.println(Utilidades.capitalizar("hola"));
+            //Field a = Utilidades.obtenerAtributo(Rol.class, "id");
+            //System.out.println(a.getType().getSimpleName());
         } catch (Exception e) {
             System.out.println(e);
+
         }
+
+//        AdaptadorDao<Persona> ad = new AdaptadorDao<>(Persona.class);
+//        try {
+//            Persona p = new Persona();
+//            p.setApellido("White");
+//            p.setNombre("Walter");
+//            p.setDireccion("Laboratorio de Ohio");
+//            p.setId(3);
+//            ad.guardar(p);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
 
     
 

@@ -42,20 +42,19 @@ public class AdaptadorDao<T> implements InterfazDao<T> {
     public void guardar(T dato) throws FileNotFoundException, JAXBException {
         ListaEnlazada<T> lista = listar();
         lista.insertar(dato);
-//        try {
+
         FileOutputStream file = new FileOutputStream(URL);
         JAXBContext jaxbc = JAXBContext.newInstance(new Class[]{ListaEnlazada.class, this.clazz});
         Marshaller marshaller = jaxbc.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         marshaller.marshal(lista, file);
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
+
     }
 
     @Override
-    public void modificar(T dato) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void modificar(T dato, Integer pos) throws FileNotFoundException, JAXBException {
+        // 7 lineas de codigo xd
+
     }
 
     @Override
