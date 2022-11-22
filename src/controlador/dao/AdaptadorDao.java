@@ -84,12 +84,10 @@ public class AdaptadorDao<T> implements InterfazDao<T> {
                                 break;
                             }
                         }
-//                        System.out.println(metodo.getName());
                         metodo.invoke(obj,
                                 Utilidades.transformarDato(Utilidades.obtenerAtributo(clazz, dato.getNodeName()), dato.getTextContent()));
 
                     }
-//                    System.out.println(dato.getNodeName() + ": " + dato.getTextContent());
                 }
                 lista.insertar(obj);
             }

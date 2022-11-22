@@ -5,6 +5,7 @@
  */
 package controlador.dao;
 
+import controlador.utiles.Utilidades;
 import modelo.Cuenta;
 import modelo.enums.TipoIdentificacion;
 
@@ -15,6 +16,7 @@ import modelo.enums.TipoIdentificacion;
 public class CuentaDao extends AdaptadorDao<Cuenta> {
 
     private Cuenta cuenta;
+    private String clave = "XABC345";
 
     public CuentaDao() {
         super(Cuenta.class);
@@ -33,6 +35,7 @@ public class CuentaDao extends AdaptadorDao<Cuenta> {
 
     public boolean guardar() throws Exception {
         this.cuenta.setId(generarId());
+        this.cuenta.setClave(Utilidades.encriptarClave(this.cuenta.getClave(), clave));
         guardar(this.cuenta);
         return true;
     }

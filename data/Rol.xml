@@ -17,9 +17,9 @@
                 </rol>
                 <siguiente>
                     <rol>
-                        <descripcion>Si hace algo xd</descripcion>
-                        <id>2</id>
-                        <nombre>Cajero</nombre>
+                        <descripcion>Utiliza el sistema o no sabe como usarlo, nos paga</descripcion>
+                        <id>4</id>
+                        <nombre>Cliente</nombre>
                     </rol>
                 </siguiente>
             </siguiente>
