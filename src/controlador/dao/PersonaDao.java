@@ -5,6 +5,7 @@
  */
 package controlador.dao;
 
+import controlador.listas.excepciones.PosicionNoEncontradaException;
 import modelo.Persona;
 
 /**
@@ -40,6 +41,17 @@ public class PersonaDao extends AdaptadorDao<Persona> {
         modificar(this.persona, pos);
         return true;
     }
+    
+    
+//    public boolean modificar(E dato, Integer pos) throws Exception{
+//        try {
+//            lista.modificarDato(pos, dato);
+//            return true;
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//        return false;
+//    }
     
     private Integer generarId(){
         return listar().getSize()+1;

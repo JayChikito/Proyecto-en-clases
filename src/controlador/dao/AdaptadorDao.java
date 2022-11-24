@@ -8,6 +8,7 @@ package controlador.dao;
 import com.sun.xml.internal.bind.v2.schemagen.Util;
 import controlador.listas.ListaEnlazada;
 import controlador.listas.NodoLista;
+import controlador.listas.excepciones.PosicionNoEncontradaException;
 import controlador.utiles.Utilidades;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -52,8 +53,17 @@ public class AdaptadorDao<T> implements InterfazDao<T> {
     }
 
     @Override
-    public void modificar(T dato, Integer pos) throws FileNotFoundException, JAXBException {
+    public void modificar(T dato, Integer pos) throws FileNotFoundException, JAXBException, PosicionNoEncontradaException {
         // 7 lineas de codigo xd
+        ListaEnlazada<T> lista = listar();
+        lista.modificar(dato,pos);
+        FileOutputStream file = new FileOutputStream(URL);
+        JAXBContext jAXBContext = JAXBContext.newInstance(new Class[]{ListaEnlazada.class, this.clazz});
+        Marshaller marshaller = jAXBContext.createMarshaller();
+
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+        marshaller.marshal(lista, file);
 
     }
 

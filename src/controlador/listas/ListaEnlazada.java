@@ -127,6 +127,27 @@ public class ListaEnlazada<E> {
 
     }
 
+    public void modificar(E dato, Integer pos) throws PosicionNoEncontradaException {
+        if (!estaVacia()) {
+            insertar(dato);
+
+        } else if (pos >= 0 && pos < size) {
+            if (pos == 0) {
+                cabecera.setDato(dato);
+            } else {
+                NodoLista<E> aux = cabecera;
+                for (int i = 0; i < pos; i++) {
+                    aux = aux.getSiguiente();
+                }
+                aux.setDato(dato);
+            }
+
+        } else {
+            throw new PosicionNoEncontradaException();
+        }
+
+    }
+
     public E eliminar(Integer pos) throws ListaNullException, PosicionNoEncontradaException {
 
         if (!estaVacia()) {

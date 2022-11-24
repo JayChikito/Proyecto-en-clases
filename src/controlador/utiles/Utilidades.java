@@ -52,6 +52,8 @@ public class Utilidades {
             Enum enumeracion = Enum.valueOf((Class) atributo.getType(), dato.toString());
             transformar = enumeracion;
 
+        } else if (atributo.getType().getSimpleName().equalsIgnoreCase("Boolean")) {
+            transformar = Boolean.parseBoolean(dato);
         } else {
             transformar = dato;
         }
@@ -59,6 +61,7 @@ public class Utilidades {
 
     }
 
+    //***************************************************************************************************\\
     public static String encriptar(String dato) {
         return Base64.getEncoder().encodeToString(dato.getBytes());
     }
@@ -98,17 +101,68 @@ public class Utilidades {
 
     }
 
-    public static void main(String[] args) {
+    public static boolean validadorDeCedula(String cedula) {
+        boolean cedulaCorrecta = false;
+        cedula = (cedula.length() == 13) ? cedula.substring(0, 10) : cedula;
 
         try {
-            String claveSecreta = "XABC345";
-            String dato = "IShowSpeed";
-            System.out.println(Utilidades.encriptarClave(dato, claveSecreta));
-            System.out.println(Utilidades.desencriptarClave("rWw5G4J6Iz9tllr1vOvUdQ==", "XABC345"));
-            //77+9Tu+/ve+/vQkHJu+/vTTvv71W77+9byk=
-        } catch (Exception e) {
-            System.out.println(e);
-            e.printStackTrace();
+
+            if (cedula.length() == 10) // ConstantesApp.LongitudCedula
+            {
+                int tercerDigito = Integer.parseInt(cedula.substring(2, 3));
+                if (tercerDigito < 6) {
+                    // Coeficientes de validación cédula
+                    // El decimo digito se lo considera dígito verificador
+                    int[] coefValCedula = {2, 1, 2, 1, 2, 1, 2, 1, 2};
+                    int verificador = Integer.parseInt(cedula.substring(9, 10));
+                    int suma = 0;
+                    int digito = 0;
+                    for (int i = 0; i < (cedula.length() - 1); i++) {
+                        digito = Integer.parseInt(cedula.substring(i, i + 1)) * coefValCedula[i];
+                        suma += ((digito % 10) + (digito / 10));
+                    }
+
+                    if ((suma % 10 == 0) && (suma % 10 == verificador)) {
+                        cedulaCorrecta = true;
+                    } else if ((10 - (suma % 10)) == verificador) {
+                        cedulaCorrecta = true;
+                    } else {
+                        cedulaCorrecta = false;
+                    }
+                } else {
+                    cedulaCorrecta = false;
+                }
+            } else {
+                cedulaCorrecta = false;
+            }
+        } catch (NumberFormatException nfe) {
+            cedulaCorrecta = false;
+        } catch (Exception err) {
+            System.out.println("Una excepcion ocurrio en el proceso de validadcion");
+            cedulaCorrecta = false;
         }
+
+        if (!cedulaCorrecta) {
+            System.out.println("La Cédula ingresada es Incorrecta");
+        }
+        return cedulaCorrecta;
+    }
+
+    public static void main(String[] args) {
+
+//        try {
+//            String claveSecreta = "XABC345";
+//            String dato = "IShowSpeed";
+//            System.out.println(Utilidades.encriptarClave(dato, claveSecreta));
+//            System.out.println(Utilidades.desencriptarClave("rWw5G4J6Iz9tllr1vOvUdQ==", "XABC345"));
+//            //77+9Tu+/ve+/vQkHJu+/vTTvv71W77+9byk=
+//        } catch (Exception e) {
+//            System.out.println(e);
+//            e.printStackTrace();
+//        }
+        String aux = "9999999999001";
+        String ced = aux.substring(0, 10);
+        String baj = aux.substring(10, 13);
+        System.out.println(ced + " " + baj);
     }
 }

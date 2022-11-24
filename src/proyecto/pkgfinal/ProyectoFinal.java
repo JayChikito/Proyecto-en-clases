@@ -32,40 +32,51 @@ public class ProyectoFinal {
     public static void main(String[] args) {
         // TODO code application logic here
 
-//        ListaEnlazada<Integer> lista = new ListaEnlazada<>();
-//        lista.insertar(25);
-//        lista.insertar(500);
-//        lista.insertar(100);
-//        lista.insertarCabecera(300);
-//        try {
-//            lista.insertarPosicion(450, 3);
-//            Integer pos = 2;
-//            System.out.println("El objeto de la posicion " + pos + " es " + lista.obtener(pos-1));
-//            lista.imprimir();
-//            lista.insertarPosicion(9, 0);
-//            lista.insertarPosicion(450, 3);
-//            lista.imprimir();
-//        } catch (PosicionNoEncontradaException | ListaNullException e) {
-//            System.out.println(e.getMessage());
-//        }
-//        System.out.println(lista.getSize());
-//        lista.imprimir();
-////                     
-////        System.out.println("\n***************************PILA***************************\n");
+        ListaEnlazada<Integer> lista = new ListaEnlazada<>();
+        lista.insertar(25);
+        lista.insertar(500);
+        lista.insertar(100);
+        lista.insertarCabecera(300);
+        try {
+            lista.insertarPosicion(450, 3);
+            Integer pos = 2;
+            System.out.println("El objeto de la posicion " + pos + " es " + lista.obtener(pos-1));
+            lista.imprimir();
+            lista.insertarPosicion(9, 0);
+            lista.insertarPosicion(450, 3);
+            lista.imprimir();
+        } catch (PosicionNoEncontradaException | ListaNullException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println(lista.getSize());
+        lista.imprimir();
+        
+        
+        try {
+            lista.modificar(12, 2);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        lista.imprimir();
+                     
+//        System.out.println("\n***************************PILA***************************\n");
 //
-////        Pila<String> p = new Pila<>(3);
-////        Cola<String> c = new Cola<>(4);
-////        try {
-////            p.push("Juan");
-////            p.push("Maria");
-////            p.push("Pedro");
-////
-////            p.imprimir();
-////            System.out.println("push " + p.pop());
-////            p.imprimir();
-////        } catch (Exception e) {
-////            System.out.println("Error" + e.getMessage());
-////        }
+//        Pila<String> p = new Pila<>(3);
+//        Cola<String> c = new Cola<>(4);
+//        try {
+//            p.push("Juan");
+//            p.push("Maria");
+//            p.push("Pedro");
+//
+//            p.imprimir();
+//            System.out.println("push " + p.pop());
+//            p.imprimir();
+//        } catch (Exception e) {
+//            System.out.println("Error" + e.getMessage());
+//        }
+        
+        
 ////
 ////        System.out.println("\n***************************COLA***************************\n");
 ////
@@ -83,23 +94,23 @@ public class ProyectoFinal {
 ////            System.out.println("Error: " + e.getMessage());
 ////        }
 //
-        AdaptadorDao<Rol> ad = new AdaptadorDao<Rol>(Rol.class);
-        Rol aux = new Rol();
-        aux.setId(2);
-        aux.setNombre("Cajero");
-        aux.setDescripcion("Si hace algo xd");
-        try {
-            ad.guardar(aux);
+//        AdaptadorDao<Rol> ad = new AdaptadorDao<Rol>(Rol.class);
+//        Rol aux = new Rol();
+//        aux.setId(2);
+//        aux.setNombre("Cajero");
+//        aux.setDescripcion("Si hace algo xd");
+//        try {
 //            ad.guardar(aux);
-            //ad.listar();
-            ad.listar().imprimir();
-//            System.out.println(Utilidades.capitalizar("hola"));
-            //Field a = Utilidades.obtenerAtributo(Rol.class, "id");
-            //System.out.println(a.getType().getSimpleName());
-        } catch (Exception e) {
-            System.out.println(e);
-
-        }
+////            ad.guardar(aux);
+//            //ad.listar();
+//            ad.listar().imprimir();
+////            System.out.println(Utilidades.capitalizar("hola"));
+//            //Field a = Utilidades.obtenerAtributo(Rol.class, "id");
+//            //System.out.println(a.getType().getSimpleName());
+//        } catch (Exception e) {
+//            System.out.println(e);
+//
+//        }
 
 //        AdaptadorDao<Persona> ad = new AdaptadorDao<>(Persona.class);
 //        try {
